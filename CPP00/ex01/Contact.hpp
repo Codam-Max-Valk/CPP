@@ -15,7 +15,6 @@ class Contact
 	public:
 		Contact();
 		Contact(std::string input[5]);
-		Contact(Contact const &src);
 		~Contact();
 		std::string	getFirstname();
 		std::string	getLastname();

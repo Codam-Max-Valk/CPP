@@ -22,7 +22,8 @@ void PhoneBook::addContact()
 {
 	static int index = 0;
 	std::string inputs[5];
-	std::string prompts[5] = {"Enter the first name: ", "Enter the last name: ", "Enter the nickname: ", "Enter the phone number: ", "Enter the darkest secret: "};
+	std::string prompts[5] = {"Enter the first name: ", "Enter the last name: ", "Enter the nickname: ", \
+								"Enter the phone number: ", "Enter the darkest secret: "};
 
 	for (int i = 0; i < 5; i++) {
 		std::cout << prompts[i];
