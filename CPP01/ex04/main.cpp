@@ -5,6 +5,7 @@
 
 void	replaceString(std::string &buffer, const std::string &s1, const std::string &s2){
 	size_t pos = 0;
+	
 	while ((pos = buffer.find(s1, pos)) != std::string::npos){
 		buffer = buffer.substr(0, pos) + s2 + buffer.substr(pos + s1.length());
 		pos += s2.length();
