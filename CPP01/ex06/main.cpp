@@ -10,6 +10,8 @@ int main(int ac, char **av) {
 				harl.complain(av[1]);
 				break;
 			}
+			else if (i == 3)
+				std::cout << "Usage: ./ex06 [DEBUG|INFO|WARNING|ERROR]" << std::endl;
 		}
 	} else {
 		std::cout << "Usage: ./ex06 [DEBUG|INFO|WARNING|ERROR]" << std::endl;

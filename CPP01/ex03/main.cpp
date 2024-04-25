@@ -3,12 +3,7 @@
 #include "Weapon.hpp"
 #include <cstdlib>
 
-void	lk(){
-	system("leaks -q testViolence");
-}
-
 int main() {
-	atexit(lk);
 	{
 		Weapon  club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);

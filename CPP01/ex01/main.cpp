@@ -1,12 +1,6 @@
 #include "Zombie.hpp"
 
-void	lk(){
-	system("leaks -q testHorde");
-}
-
 int main() {
-	atexit(lk);
-
 	Zombie *horde = zombieHorde(5, "Sheep");
 	
 	if (horde == NULL) return 1;
