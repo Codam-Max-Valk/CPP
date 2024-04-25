@@ -25,16 +25,17 @@ void	Harl::error(void){
 }
 
 void Harl::complain(std::string level){
-	std::map<std::string, void (Harl::*)()> functionMap;
-	functionMap["DEBUG"] = &Harl::debug;
-	functionMap["INFO"] = &Harl::info;
-	functionMap["WARNING"] = &Harl::warning;
-	functionMap["ERROR"] = &Harl::error;
+	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	Func functionPtr[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	if (functionMap.find(level) != functionMap.end()){
-		(this->*functionMap[level])();
-	}
-	else {
-		std::cout << "Invalid level" << std::endl;
+	for (int i = 0; i < 4; i++){
+		if (level == levels[i]){
+			(this->*functionPtr[i])();
+			return;
+		}
+		else if (i == 3){
+			std::cout << "Invalid level" << std::endl;
+			return;
+		}
 	}
 }

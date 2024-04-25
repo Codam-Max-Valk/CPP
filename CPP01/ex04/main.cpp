@@ -17,7 +17,7 @@ int	main(int ac, char **av){
 		std::cout << "Invalid number of arguments" << std::endl;
 		return 1;
 	}
-	
+
 	const std::string filename = av[1];
 	const std::string new_filename = filename + ".replace";
 	const std::string s1 = av[2];
