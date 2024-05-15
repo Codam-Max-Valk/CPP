@@ -1,14 +1,16 @@
-NAME = DiamondTrap
+NAME = Poly
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror
 OBJFOLDER = obj
 
 # Files
 SRCS =  main.cpp \
-		ClapTrap.cpp \
-		ScavTrap.cpp \
-		FragTrap.cpp \
-		DiamondTrap.cpp
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
+
 		
 OBJS = $(addprefix $(OBJFOLDER)/, $(SRCS:.cpp=.o))
 

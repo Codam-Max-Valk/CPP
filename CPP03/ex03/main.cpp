@@ -1,45 +1,44 @@
 
+#include "DiamondTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include <iostream>
+#include <string>
 
 int main()
 {
+	std::string input;
+	DiamondTrap dia("DIAMONDS!");
+	dia.whoAmI();
+	dia.highFivesGuys();
+	dia.guardGate();
+
+	while (true)
 	{
-		std::cout << "ScavTrap\n" << std::endl;
-		ScavTrap scavTrap("Scav");
-
-		scavTrap.attack("Bandit");
-		scavTrap.takeDamage(50);
-		scavTrap.beRepaired(30);
-		scavTrap.guardGate();
-
-		scavTrap.takeDamage(101);
-		scavTrap.attack("Bandit");
-		scavTrap.guardGate();
-	}
-	std::cout << std::endl;
-	{
-		std::cout << "ClapTrap\n" << std::endl;
-		ClapTrap clapTrap("Dummy");
-
-		clapTrap.attack("Bandit");
-		clapTrap.takeDamage(5);
-		clapTrap.beRepaired(3);
-	}
-	std::cout << std::endl;
-	{
-		std::cout << "FragTrap\n" << std::endl;
-		FragTrap fragTrap("Frag");
-
-		fragTrap.attack("Bandit");
-		fragTrap.takeDamage(50);
-		fragTrap.beRepaired(30);
-		fragTrap.highFivesGuys();
-
-		fragTrap.takeDamage(101);
-		fragTrap.attack("Bandit");
-		fragTrap.highFivesGuys();
+		std::string amount;
+		std::cout << "Do you want to continue? (exit/attack/take/repair/who/high/guard): ";
+		std::cin >> input;
+		if (input == "exit")
+			break;
+		else if (input == "attack")
+			dia.attack("target");
+		else if (input == "who")
+			dia.whoAmI();
+		else if (input == "high")
+			dia.highFivesGuys();
+		else if (input == "guard")
+			dia.guardGate();
+		else if (input == "take" || input == "repair")
+		{
+			std::cout << "Enter amount: ";
+			std::cin >> amount;
+			if (input == "repair")
+				dia.beRepaired(std::stoi(amount));
+			else if (input == "take")
+				dia.takeDamage(std::stoi(amount));
+		}
+		else
+			std::cout << "Invalid input" << std::endl;
 	}
     return 0;
 }

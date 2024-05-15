@@ -10,3 +10,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), Fra
 	this->_energyPoints = this->ScavTrap::_energyPoints;
 	this->_attackDamage = this->FragTrap::_attackDamage;
 }
+
+DiamondTrap::~DiamondTrap(){
+	std::cout << "DiamondTrap destructor called" << std::endl;
+}
+
+void	DiamondTrap::whoAmI(){
+	std::cout << "DiamondTrap name: " << this->_name << std::endl;
+	std::cout << "ClapTrap name: " << this->ClapTrap::_name << std::endl;
+}
