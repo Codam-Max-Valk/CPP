@@ -4,7 +4,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main(void)
+int main()
 {
 	const Animal* Puppy = new Dog();
 	std::cout << std::endl;

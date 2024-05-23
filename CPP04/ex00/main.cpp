@@ -3,6 +3,7 @@
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include <ostream>
 
 int main()
 {
@@ -16,6 +17,7 @@ int main()
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << k->getType() << " " << std::endl;
+	std::cout << meta->getType() << " " << std::endl;
 
 	i->makeSound();
 	j->makeSound();
@@ -25,5 +27,6 @@ int main()
 	delete meta;
 	delete j;
 	delete i;
+	delete k;
 	return 0;
 }

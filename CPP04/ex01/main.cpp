@@ -4,62 +4,35 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-namespace std{};	using namespace std;
-// int main()
-// {
-// 	// const Animal* meta = new Animal();
-// 	const Animal* i = new Cat();
-// 	const Animal* j = new Dog();
-
-
-// //____________WRONG____________________
-// 	// const WrongAnimal* k = new WrongCat();
-
-// 	// std::cout << i->getType() << " " << std::endl;
-// 	std::cout << j->getType() << " " << std::endl;
-// 	// std::cout << k->getType() << " " << std::endl;
-
-// 	// i->makeSound();
-// 	j->makeSound();
-// 	// k->makeSound();
-// 	// meta->makeSound();
-
-// 	// delete meta;
-// 	delete static_cast<const Dog*>(j);
-// 	delete i;
-// 	return 0;
-// }
-
-
-int main(void)
+int main()
 {
 	const Animal* Puppy = new Dog();
-	cout << endl;
+	std::cout << std::endl;
 
 	const Animal* Poesi = new Cat();
-	cout << endl;
+	std::cout << std::endl;
 
-	cout << "------------------- pet -------------------" << endl;
+	std::cout << "------------------- pet -------------------" << std::endl;
 	const Animal* pet[4];
 
-	cout << "------------------- DOGS -------------------" << endl;
+	std::cout << "------------------- DOGS -------------------" << std::endl;
 	for (size_t i = 0; i < 2; i++) {
 		pet[i] = new Dog();
-		cout << endl;
+		std::cout << std::endl;
 	}
 
-	cout << "------------------- CATS -------------------" << endl;
+	std::cout << "------------------- CATS -------------------" << std::endl;
 	for (size_t i = 2; i < 4; i++) {
 		pet[i] = new Cat();
-		cout << endl;
+		std::cout << std::endl;
 	}
 
-	cout << "---------------- DELETE pet ---------------" << endl;
+	std::cout << "---------------- DELETE pet ---------------" << std::endl;
 	for (size_t i = 0; i < 4; i++) {
 		delete pet[i];
 	}
-	cout << "--------------- pet DELETED ---------------" << endl;
-	cout << endl;
+	std::cout << "--------------- pet DELETED ---------------" << std::endl;
+	std::cout << std::endl;
 
 	delete Puppy;
 	delete Poesi;
