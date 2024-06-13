@@ -3,7 +3,22 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include "Exceptions.hpp"
+
+class GradeTooHighException : public std::exception{
+	private:
+		const char *_msg = "Grade is too high";
+	public:
+		const char *what() const noexcept;
+};
+
+class GradeTooLowException : public std::exception{
+	private:
+		const char *_msg = "Grade is too low";
+	public:
+		const char *what() const noexcept;
+};
+
+class Form;
 
 class Bureaucrat{
 	private:
@@ -20,7 +35,7 @@ class Bureaucrat{
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
-
+		void signForm(Form &form);
 
 		class GradeTooHighException : public ::GradeTooHighException {};
 		class GradeTooLowException : public ::GradeTooLowException {};
