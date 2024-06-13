@@ -1,0 +1,46 @@
+#pragma once
+
+#include <exception>
+#include <iostream>
+#include <ostream>
+#include <string>
+
+// class GradeTooHighException : public std::exception{
+// 	private:
+// 		const std::string _msg = "Grade is too high";
+// 	public:
+// 		virtual const char *what() const noexcept;
+// };
+
+
+class Bureaucrat{
+	private:
+		const std::string _name;
+		int _grade;
+		Bureaucrat();
+
+	public:
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(Bureaucrat const &other);
+		Bureaucrat &operator=(Bureaucrat const &other);
+		~Bureaucrat();
+		const std::string getName() const;
+		int getGrade() const;
+		void incrementGrade();
+		void decrementGrade();
+
+		class GradeTooHighException : public std::exception{
+			private:
+				const char *_msg = "Grade is too high";
+			public:
+				const char *what() const noexcept;
+		};
+		class GradeTooLowException : public std::exception{
+			private:
+				const char *_msg = "Grade is too low";
+			public:
+				const char *what() const noexcept;
+		};
+};
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
+

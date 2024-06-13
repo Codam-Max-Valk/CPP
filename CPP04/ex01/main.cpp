@@ -12,6 +12,14 @@ int main()
 	const Animal* Poesi = new Cat();
 	std::cout << std::endl;
 
+	std::cout << "------------------- WRONG -------------------" << std::endl;
+	{
+		const WrongAnimal* fakecat = new WrongCat();
+		fakecat->makeSound();
+		std::cout << std::endl;
+		delete fakecat;
+	}
+	std::cout << std::endl;
 	std::cout << "------------------- pet -------------------" << std::endl;
 	const Animal* pet[4];
 

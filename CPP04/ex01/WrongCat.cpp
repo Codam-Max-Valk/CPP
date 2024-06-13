@@ -13,3 +13,7 @@ WrongCat &WrongCat::operator=(const WrongCat &wrongCat){
 
 WrongCat::~WrongCat(){
 }
+
+void WrongCat::makeSound() const{
+	std::cout << "not a cat" << std::endl;
+}
