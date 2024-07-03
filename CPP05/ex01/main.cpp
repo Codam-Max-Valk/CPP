@@ -143,21 +143,68 @@ void testFormSignWithNotEnoughGrade() {
 	}
 }
 
+//-----------------------------------------------------------------------------------------------
+/* #include <sstream>
+// Test case 14: Signing a Form with a Bureaucrat with enough grade
+void testBureaucratSignFormWithEnoughGrade() {
+	Bureaucrat b("John Doe", 50);
+	Form f("Form 8", 50, 75);
+	std::stringstream ss;
+	std::streambuf* prevCoutBuf = std::cout.rdbuf(ss.rdbuf());
+
+	b.signForm(f);
+	std::cout.rdbuf(prevCoutBuf);
+	std::string expectedOutput = b.getName() + " signs " + f.getName() + "\n";
+	assert(ss.str() == expectedOutput);
+	std::cout << f;
+}
+
+// Test case 15: Signing a Form with a Bureaucrat with not enough grade
+void testBureaucratSignFormWithNotEnoughGrade() {
+	Bureaucrat b("John Doe", 50);
+	Form f("Form 8", 40, 75);
+	std::cout << f;
+	std::stringstream ss;
+	std::streambuf* prevCoutBuf = std::cout.rdbuf(ss.rdbuf());
+
+	b.signForm(f);
+
+	std::cout.rdbuf(prevCoutBuf);
+	std::string expectedOutput = b.getName() + " couldn't sign " + f.getName() + \
+		" because Grade is too low" + "\n";
+	assert(ss.str() == expectedOutput);
+}*/
+//-----------------------------------------------------------------------------------------------
 
 int main() {
 	testBureaucratConstructorValidGrade();
+	std::cout << "------------------------" << std::endl;
 	testBureaucratConstructorMinGrade();
+	std::cout << "------------------------" << std::endl;
 	testBureaucratConstructorMaxGrade();
+	std::cout << "------------------------" << std::endl;
 	testBureaucratConstructorBelowMinGrade();
+	std::cout << "------------------------" << std::endl;
 	testBureaucratConstructorAboveMaxGrade();
+	std::cout << "------------------------" << std::endl;
 	testBureaucratInsertionOperator();
-
+	std::cout << "------------------------" << std::endl;
 	testFormConstructorValidGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormConstructorMinGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormConstructorMaxGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormConstructorBelowMinGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormConstructorAboveMaxGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormSignWithEnoughGrade();
+	std::cout << "------------------------" << std::endl;
 	testFormSignWithNotEnoughGrade();
+	// std::cout << "------------------------" << std::endl;
+	// testBureaucratSignFormWithEnoughGrade();
+	// std::cout << "------------------------" << std::endl;
+	// testBureaucratSignFormWithNotEnoughGrade();
 	return 0;
 }

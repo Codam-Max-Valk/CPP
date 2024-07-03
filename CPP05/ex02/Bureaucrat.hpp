@@ -22,7 +22,7 @@ class GradeTooLowException : public std::exception{
 		const char *what() const noexcept;
 };
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 	private:
@@ -39,7 +39,7 @@ class Bureaucrat{
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form &form);
+		void signForm(AForm &form);
 
 		class GradeTooHighException : public ::GradeTooHighException {};
 		class GradeTooLowException : public ::GradeTooLowException {};
