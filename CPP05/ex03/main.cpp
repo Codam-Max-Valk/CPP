@@ -6,9 +6,11 @@
 #include <fstream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 void	ShrubberyCreationFormNoSign(){
 	try {
@@ -154,25 +156,49 @@ void	testPresidentialPardonForm()
 
 int	main()
 {
+	AForm *Form;
+	Intern intern;
+
 	srand(time(0));
+	// std::cout << "------------------------------------" << std::endl;
+	// ShrubberyCreationFormNoSign();
+	// std::cout << "------------------------------------" << std::endl;
+	// PresidentialPardonFormNoSign();
+	// std::cout << "------------------------------------" << std::endl;
+	// RobotomyRequestFormNoSign();
+	// std::cout << "------------------------------------" << std::endl;
+	// ShrubberyCreationFormNoGrade();
+	// std::cout << "------------------------------------" << std::endl;
+	// RobotomyRequestFormNoGrade();
+	// std::cout << "------------------------------------" << std::endl;
+	// PresidentialPardonFormNoGrade();
+	// std::cout << "------------------------------------" << std::endl;
+	// testShrubberyCreationForm();
+	// std::cout << "------------------------------------" << std::endl;
+	// testRobotomyRequestForm();
+	// std::cout << "------------------------------------" << std::endl;
+	// testPresidentialPardonForm();
+	// std::cout << "------------------------------------" << std::endl;
+
+	Form = intern.makeForm("shrubbery creation", "BIG BRO");
 	std::cout << "------------------------------------" << std::endl;
-	ShrubberyCreationFormNoSign();
+	std::cout << *Form;
+	delete Form;
 	std::cout << "------------------------------------" << std::endl;
-	PresidentialPardonFormNoSign();
+	Form = intern.makeForm("robotomy request", "LIL BRO");
 	std::cout << "------------------------------------" << std::endl;
-	RobotomyRequestFormNoSign();
+	std::cout << *Form;
+	delete Form;
 	std::cout << "------------------------------------" << std::endl;
-	ShrubberyCreationFormNoGrade();
+	Form = intern.makeForm("presidential pardon", "BIG SIS");
 	std::cout << "------------------------------------" << std::endl;
-	RobotomyRequestFormNoGrade();
+	std::cout << *Form;
+	delete Form;
 	std::cout << "------------------------------------" << std::endl;
-	PresidentialPardonFormNoGrade();
+	Form = intern.makeForm("fake form", "Crowdstrike");
 	std::cout << "------------------------------------" << std::endl;
-	testShrubberyCreationForm();
-	std::cout << "------------------------------------" << std::endl;
-	testRobotomyRequestForm();
-	std::cout << "------------------------------------" << std::endl;
-	testPresidentialPardonForm();
+	// std::cout << Form;
+	delete Form;
 	std::cout << "------------------------------------" << std::endl;
 	return 0;
 }
