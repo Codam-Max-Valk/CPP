@@ -5,15 +5,7 @@
 #include <ostream>
 #include <string>
 
-// class GradeTooHighException : public std::exception{
-// 	private:
-// 		const std::string _msg = "Grade is too high";
-// 	public:
-// 		virtual const char *what() const noexcept;
-// };
-
-
-class Bureaucrat{
+class Bureaucrat {
 	private:
 		const std::string _name;
 		int _grade;
@@ -42,5 +34,6 @@ class Bureaucrat{
 				const char *what() const noexcept;
 		};
 };
+
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
