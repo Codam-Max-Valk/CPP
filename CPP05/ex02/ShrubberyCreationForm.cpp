@@ -47,5 +47,5 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
 		throw GradeTooLowException();
 
 	copyBush(getName() + "_shrubbery");
-	std::cout << "Tree printed in 'shrubbery' file." << std::endl;
+	std::cout << "Bush printed in 'shrubbery' file." << std::endl;
 }

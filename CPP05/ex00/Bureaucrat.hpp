@@ -5,6 +5,19 @@
 #include <ostream>
 #include <string>
 
+class GradeTooHighException : public std::exception{
+	private:
+		const char *_msg = "Grade is too high";
+	public:
+		const char *what() const noexcept;
+};
+class GradeTooLowException : public std::exception{
+	private:
+		const char *_msg = "Grade is too low";
+	public:
+		const char *what() const noexcept;
+};
+
 class Bureaucrat {
 	private:
 		const std::string _name;
@@ -21,18 +34,8 @@ class Bureaucrat {
 		void incrementGrade();
 		void decrementGrade();
 
-		class GradeTooHighException : public std::exception{
-			private:
-				const char *_msg = "Grade is too high";
-			public:
-				const char *what() const noexcept;
-		};
-		class GradeTooLowException : public std::exception{
-			private:
-				const char *_msg = "Grade is too low";
-			public:
-				const char *what() const noexcept;
-		};
+		class GradeTooHighException : public ::GradeTooHighException {};
+		class GradeTooLowException : public ::GradeTooLowException {};
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

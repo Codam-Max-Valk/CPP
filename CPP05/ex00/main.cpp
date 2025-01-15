@@ -38,7 +38,7 @@ void testBureaucratConstructorBelowMinGrade() {
 	} catch (std::exception &e) {
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Grade is too high");
-		std::cout << "Test case 4: Bureaucrat with grade below minimum - [OK]" << std::endl;
+		std::cout << "Test case 4: Bureaucrat with grade which is just a lil too high - [OK]" << std::endl;
 	}
 }
 
@@ -51,7 +51,7 @@ void testBureaucratConstructorAboveMaxGrade() {
 	} catch (std::exception &e) {
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Grade is too low");
-		std::cout << "Test case 5: Bureaucrat with grade above maximum - [OK]" << std::endl;
+		std::cout << "Test case 5: Bureaucrat with grade which is just too low - [OK]" << std::endl;
 	}
 }
 
@@ -64,10 +64,15 @@ void testBureaucratInsertionOperator() {
 
 int main() {
 	testBureaucratConstructorValidGrade();
+	std::cout << "------------------------------------------------------------" << std::endl;
 	testBureaucratConstructorMinGrade();
+	std::cout << "------------------------------------------------------------" << std::endl;
 	testBureaucratConstructorMaxGrade();
+	std::cout << "------------------------------------------------------------" << std::endl;
 	testBureaucratConstructorBelowMinGrade();
+	std::cout << "------------------------------------------------------------" << std::endl;
 	testBureaucratConstructorAboveMaxGrade();
+	std::cout << "------------------------------------------------------------" << std::endl;
 	testBureaucratInsertionOperator();
 
 	return 0;

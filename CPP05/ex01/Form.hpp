@@ -15,11 +15,12 @@ class Form{
 		Form &operator=(Form const &other);
 		~Form();
 		const std::string getName() const;
-		void beSigned(Bureaucrat &bureaucrat);
 		bool getSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
 
+		void beSigned(Bureaucrat &bureaucrat);
+		
 		class GradeTooHighException : public ::GradeTooHighException {};
 		class GradeTooLowException : public ::GradeTooLowException {};
 };

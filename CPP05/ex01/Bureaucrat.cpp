@@ -30,9 +30,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	if (DEBUG)
 		std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(other._grade){
@@ -60,20 +60,20 @@ int Bureaucrat::getGrade() const{
 
 void Bureaucrat::incrementGrade(){
 	if (_grade - 1 < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	_grade--;
 }
 
 void Bureaucrat::decrementGrade(){
 	if (_grade + 1 > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	_grade++;
 }
 
 void Bureaucrat::signForm(Form& form){
 	try {
 		form.beSigned(*this);
-		std::cout << this->getName() << " signs " << form.getName() << std::endl;
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e){
 		std::cout << this->getName() << " couldn't sign " << form.getName() \

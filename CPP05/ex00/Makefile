@@ -1,4 +1,4 @@
-NAME = Bureau
+NAME = bureau
 CC = clang++
 CFLAGS = -std=c++11 -Wall -Wextra -Werror
 OBJFOLDER = obj
@@ -9,6 +9,9 @@ OBJS = $(addprefix $(OBJFOLDER)/, $(SRCS:.cpp=.o))
 
 # Rules
 all: $(NAME)
+
+run: all clean
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)

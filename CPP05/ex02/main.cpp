@@ -142,8 +142,8 @@ void	testRobotomyRequestForm()
 // Test cases for PresidentialPardonForm
 void	testPresidentialPardonForm()
 {
-	Bureaucrat bureaucrat("Joseph Robinette Biden jr.", 5);
-	PresidentialPardonForm form("Donald John Trump");
+	Bureaucrat bureaucrat("Joe Biden", 5);
+	PresidentialPardonForm form("Hunter Biden");
 
 	form.beSigned(bureaucrat);
 	form.execute(bureaucrat);

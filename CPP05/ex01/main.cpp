@@ -144,7 +144,7 @@ void testFormSignWithNotEnoughGrade() {
 }
 
 //-----------------------------------------------------------------------------------------------
-/* #include <sstream>
+ #include <sstream>
 // Test case 14: Signing a Form with a Bureaucrat with enough grade
 void testBureaucratSignFormWithEnoughGrade() {
 	Bureaucrat b("John Doe", 50);
@@ -154,16 +154,17 @@ void testBureaucratSignFormWithEnoughGrade() {
 
 	b.signForm(f);
 	std::cout.rdbuf(prevCoutBuf);
-	std::string expectedOutput = b.getName() + " signs " + f.getName() + "\n";
+	std::string expectedOutput = b.getName() + " signed " + f.getName() + "\n";
 	assert(ss.str() == expectedOutput);
+	std::cout << b;
 	std::cout << f;
+	std::cout << ss.str();
 }
 
 // Test case 15: Signing a Form with a Bureaucrat with not enough grade
 void testBureaucratSignFormWithNotEnoughGrade() {
 	Bureaucrat b("John Doe", 50);
-	Form f("Form 8", 40, 75);
-	std::cout << f;
+	Form f("Form 9", 40, 75);
 	std::stringstream ss;
 	std::streambuf* prevCoutBuf = std::cout.rdbuf(ss.rdbuf());
 
@@ -173,7 +174,10 @@ void testBureaucratSignFormWithNotEnoughGrade() {
 	std::string expectedOutput = b.getName() + " couldn't sign " + f.getName() + \
 		" because Grade is too low" + "\n";
 	assert(ss.str() == expectedOutput);
-}*/
+	std::cout << b;
+	std::cout << f;
+	std::cout << ss.str();
+}
 //-----------------------------------------------------------------------------------------------
 
 int main() {
@@ -202,9 +206,9 @@ int main() {
 	testFormSignWithEnoughGrade();
 	std::cout << "------------------------" << std::endl;
 	testFormSignWithNotEnoughGrade();
-	// std::cout << "------------------------" << std::endl;
-	// testBureaucratSignFormWithEnoughGrade();
-	// std::cout << "------------------------" << std::endl;
-	// testBureaucratSignFormWithNotEnoughGrade();
+	std::cout << "------------------------" << std::endl;
+	testBureaucratSignFormWithEnoughGrade();
+	std::cout << "------------------------" << std::endl;
+	testBureaucratSignFormWithNotEnoughGrade();
 	return 0;
 }
