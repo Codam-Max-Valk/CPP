@@ -34,6 +34,8 @@ static void ConvertChar(const std::string &value) {
 		int i = CharInput(value);
 		if (!i)
 			i = std::stoi(value);
+		if (i < 0 || i > 255)
+			throw ImpossibleException();
 		if (std::isprint(i))
 			std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
 		else
