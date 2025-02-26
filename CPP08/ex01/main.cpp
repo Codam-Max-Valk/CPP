@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-void	testSpanBasic(){
+void	testSpanBasic() {
 	Span span(5);
 
 	// Test adding elements

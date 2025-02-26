@@ -1,9 +1,9 @@
 #include <iostream>
 #include "Contact.hpp"
 
-Contact::Contact(){}
+Contact::Contact() {}
 
-Contact::~Contact(){}
+Contact::~Contact() {}
 
 Contact::Contact(std::string input[5])
 {

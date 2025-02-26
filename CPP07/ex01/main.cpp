@@ -2,7 +2,7 @@
 
 
 
-int main(){
+int main() {
 	int a[] = {1, 2, 3, 4, 5};
 	iter(a, 5, print);
 	std::cout << std::endl;

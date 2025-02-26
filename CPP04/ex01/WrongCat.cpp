@@ -1,17 +1,17 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat"){
+WrongCat::WrongCat() : WrongAnimal("WrongCat") {
 }
 
-WrongCat::WrongCat(const WrongCat &wrongCat) : WrongAnimal(wrongCat){
+WrongCat::WrongCat(const WrongCat &wrongCat) : WrongAnimal(wrongCat) {
 }
 
-WrongCat &WrongCat::operator=(const WrongCat &wrongCat){
+WrongCat &WrongCat::operator=(const WrongCat &wrongCat) {
 	this->type = wrongCat.type;
 	return *this;
 }
 
-WrongCat::~WrongCat(){
+WrongCat::~WrongCat() {
 }
 
 void WrongCat::makeSound() const{

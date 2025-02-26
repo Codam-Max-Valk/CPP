@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int	main(){
+int	main() {
 	std::string brain = "HI THIS IS BRAIN";
 
 	std::string *stringPTR = &brain;

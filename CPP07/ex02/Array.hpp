@@ -19,15 +19,15 @@ class Array{
 		T *_array;
 		size_t _size;
 	public:
-		Array() : _array(NULL), _size(0){};
-		Array(size_t n) : _array(new T[n]), _size(n){};
-		Array(const Array &other) : _array(new T[other._size]), _size(other._size){
+		Array() : _array(NULL), _size(0) {};
+		Array(size_t n) : _array(new T[n]), _size(n) {};
+		Array(const Array &other) : _array(new T[other._size]), _size(other._size) {
 			for (size_t i = 0; i < _size; i++)
 				_array[i] = other._array[i];
 		};
-		~Array(){delete[] _array;};
+		~Array() {delete[] _array;};
 		Array &operator=(const Array &other) {
-			if (this != &other){
+			if (this != &other) {
 				delete[] _array;
 				_array = new T[other._size];
 				_size = other._size;

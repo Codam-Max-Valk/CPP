@@ -3,18 +3,18 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-Intern::Intern(){
+Intern::Intern() {
 	if (DEBUG)
 		std::cout << "Intern default constructor called" << std::endl;
 }
 
-Intern::Intern(Intern const &other){
+Intern::Intern(Intern const &other) {
 	if (DEBUG)
 		std::cout << "Intern copy constructor called" << std::endl;
 	*this = other;
 }
 
-Intern &Intern::operator=(Intern const &other){
+Intern &Intern::operator=(Intern const &other) {
 	if (this != &other)
 		*this = other;
 	if (DEBUG)
@@ -22,29 +22,29 @@ Intern &Intern::operator=(Intern const &other){
 	return *this;
 }
 
-Intern::~Intern(){
+Intern::~Intern() {
 	if (DEBUG)
 		std::cout << "Intern destructor called" << std::endl;
 }
 
-AForm *createRobotomyRequestForm(std::string target){
+AForm *createRobotomyRequestForm(std::string target) {
 	return new RobotomyRequestForm(target);
 }
 
-AForm *createPresidentialPardonForm(std::string target){
+AForm *createPresidentialPardonForm(std::string target) {
 	return new PresidentialPardonForm(target);
 }
 
-AForm *createShrubberyCreationForm(std::string target){
+AForm *createShrubberyCreationForm(std::string target) {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm *Intern::makeForm(std::string formName, std::string target){
+AForm *Intern::makeForm(std::string formName, std::string target) {
 	std::string FormNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	AForm* (*CreateForms[])(std::string) = {createShrubberyCreationForm, createRobotomyRequestForm, createPresidentialPardonForm};
 
-	for (int i = 0; i < 3; i++){
-		if (formName == FormNames[i]){
+	for (int i = 0; i < 3; i++) {
+		if (formName == FormNames[i]) {
 			std::cout << "Intern creates " << formName << std::endl;
 			return CreateForms[i](target);
 		}

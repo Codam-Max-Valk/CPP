@@ -11,22 +11,22 @@ const char *GradeTooLowException::what() const noexcept {
 	return _msg;
 }
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat){
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
 	return out;
 }
 
-Bureaucrat::Bureaucrat(){
+Bureaucrat::Bureaucrat() {
 	if (DEBUG)
 		std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat(){
+Bureaucrat::~Bureaucrat() {
 	if (DEBUG)
 		std::cout << "Bureaucrat destructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade){
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
 	if (DEBUG)
 		std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
@@ -35,12 +35,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(other._grade){
+Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(other._grade) {
 	if (DEBUG)
 		std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other){
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other) {
 	if (this != &other)
 	{
 		const_cast<std::string&>(_name) = other._name;
@@ -58,24 +58,24 @@ int Bureaucrat::getGrade() const{
 	return _grade;
 }
 
-void Bureaucrat::incrementGrade(){
+void Bureaucrat::incrementGrade() {
 	if (_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	_grade--;
 }
 
-void Bureaucrat::decrementGrade(){
+void Bureaucrat::decrementGrade() {
 	if (_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	_grade++;
 }
 
-void Bureaucrat::signForm(Form& form){
+void Bureaucrat::signForm(Form& form) {
 	try {
 		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << this->getName() << " couldn't sign " << form.getName() \
 			<< " because " << e.what() << std::endl;
 	}

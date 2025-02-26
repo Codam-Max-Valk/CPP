@@ -10,7 +10,7 @@
 	#define DEBUG 0
 #endif
 
-class Serializer{
+class Serializer {
 	private:
 		Serializer();
 		Serializer(Serializer const &other) = delete;

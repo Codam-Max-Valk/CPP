@@ -1,21 +1,21 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(){
+ShrubberyCreationForm::ShrubberyCreationForm() {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137) {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other){
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other) {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other){
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
 	if (this != &other)
 		AForm::operator=(other);
 	if (DEBUG)
@@ -23,12 +23,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm(){
+ShrubberyCreationForm::~ShrubberyCreationForm() {
 	if (DEBUG)
 		std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void	copyBush(std::string dest){
+void	copyBush(std::string dest) {
 	std::ifstream srcFile("bush.txt");
 	std::ofstream destFile(dest);
 

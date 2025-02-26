@@ -1,7 +1,7 @@
 #include "Serializer.hpp"
 #include <sys/types.h>
 
-int main(){
+int main() {
 	Data data;
 	Data *re_data;
 	uintptr_t ptr;
@@ -17,8 +17,9 @@ int main(){
 
 	ptr = Serializer::serialize(&data);
 	std::cout << "Serialized pointer: " << ptr << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
 	re_data = Serializer::deserialize(ptr);
-	if (re_data == &data){
+	if (re_data == &data) {
 		std::cout << "Deserialized pointer: " << re_data << std::endl;
 		std::cout << "Deserialized id: " << re_data->id << std::endl;
 		std::cout << "Deserialized name: " << re_data->name << std::endl;

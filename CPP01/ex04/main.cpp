@@ -3,17 +3,17 @@
 #include <iosfwd>
 #include <fstream>
 
-void	replaceString(std::string &buffer, const std::string &s1, const std::string &s2){
+void	replaceString(std::string &buffer, const std::string &s1, const std::string &s2) {
 	size_t pos = 0;
 	
-	while ((pos = buffer.find(s1, pos)) != std::string::npos){
+	while ((pos = buffer.find(s1, pos)) != std::string::npos) {
 		buffer = buffer.substr(0, pos) + s2 + buffer.substr(pos + s1.length());
 		pos += s2.length();
 	}
 }
 
-int	main(int ac, char **av){
-	if (ac != 4){
+int	main(int ac, char **av) {
+	if (ac != 4) {
 		std::cout << "Invalid number of arguments" << std::endl;
 		return 1;
 	}
@@ -24,12 +24,12 @@ int	main(int ac, char **av){
 	const std::string s2 = av[3];
 
 	std::ifstream file(filename);
-	if (!file.is_open()){
+	if (!file.is_open()) {
 		std::cout << "File not found" << std::endl;
 		return 1;
 	}
 	std::ofstream new_file(new_filename);
-	if (!new_file.is_open()){
+	if (!new_file.is_open()) {
 		std::cout << "Error creating new file" << std::endl;
 		return 1;
 	}

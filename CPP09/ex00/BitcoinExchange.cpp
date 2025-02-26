@@ -4,7 +4,7 @@
 
 BitcoinExchange::BitcoinExchange() {};
 
-BitcoinExchange::BitcoinExchange(std::string filename, std::string cmp_filename) :_data(), _second_data(), _database(filename), _second_database(cmp_filename){
+BitcoinExchange::BitcoinExchange(std::string filename, std::string cmp_filename) :_data(), _second_data(), _database(filename), _second_database(cmp_filename) {
 	std::ifstream file(filename);
 	std::ifstream cmp_file(cmp_filename);
 
@@ -32,7 +32,7 @@ BitcoinExchange::BitcoinExchange(std::string filename, std::string cmp_filename)
 	}
 };
 	
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _data(copy._data), _second_data(copy._second_data), _database(copy._database), _second_database(copy._second_database){};
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _data(copy._data), _second_data(copy._second_data), _database(copy._database), _second_database(copy._second_database) {};
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
 	_data = copy._data;

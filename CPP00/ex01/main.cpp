@@ -3,7 +3,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int	main(){
+int	main() {
 	PhoneBook pb;
 	std::string command = "";
 

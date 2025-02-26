@@ -2,22 +2,22 @@
 #include "Bureaucrat.hpp"
 #include <string>
 
-PresidentialPardonForm::PresidentialPardonForm(){
+PresidentialPardonForm::PresidentialPardonForm() {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5){
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5) {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : AForm(other){
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : AForm(other) {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other){
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other) {
 	if (this != &other)
 		AForm::operator=(other);
 	if (DEBUG)
@@ -25,7 +25,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(){
+PresidentialPardonForm::~PresidentialPardonForm() {
 	if (DEBUG)
 		std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }

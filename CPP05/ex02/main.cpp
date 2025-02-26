@@ -10,7 +10,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void	ShrubberyCreationFormNoSign(){
+void	ShrubberyCreationFormNoSign() {
 	try {
 		Bureaucrat crat("John Doe", 1);
 		ShrubberyCreationForm form("garden");
@@ -18,14 +18,14 @@ void	ShrubberyCreationFormNoSign(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Form is not signed");
 		std::cout << "Test case 1: ShrubberyCreationForm not signed - [OK]" << std::endl;
 	}
 }
 
-void	ShrubberyCreationFormNoGrade(){
+void	ShrubberyCreationFormNoGrade() {
 	try {
 		Bureaucrat crat("John Doe", 150);
 		ShrubberyCreationForm form("garden");
@@ -34,7 +34,7 @@ void	ShrubberyCreationFormNoGrade(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Grade is too low");
 		std::cout << "Test case 1: ShrubberyCreationForm grade too low - [OK]" << std::endl;
@@ -61,7 +61,7 @@ void	testShrubberyCreationForm()
 	unlink("garden_shrubbery");
 }
 
-void	RobotomyRequestFormNoSign(){
+void	RobotomyRequestFormNoSign() {
 	Bureaucrat crat("John Doe", 1);
 	RobotomyRequestForm form("robot");
 	try {
@@ -69,7 +69,7 @@ void	RobotomyRequestFormNoSign(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << form;
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Form is not signed");
@@ -77,7 +77,7 @@ void	RobotomyRequestFormNoSign(){
 	}
 }
 
-void	RobotomyRequestFormNoGrade(){
+void	RobotomyRequestFormNoGrade() {
 	Bureaucrat crat("John Doe", 150);
 	RobotomyRequestForm form("robot");
 	try {
@@ -86,7 +86,7 @@ void	RobotomyRequestFormNoGrade(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << form;
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Grade is too low");
@@ -94,7 +94,7 @@ void	RobotomyRequestFormNoGrade(){
 	}
 }
 
-void	PresidentialPardonFormNoSign(){
+void	PresidentialPardonFormNoSign() {
 	Bureaucrat crat("John Doe", 1);
 	PresidentialPardonForm form("criminal");
 	try {
@@ -102,7 +102,7 @@ void	PresidentialPardonFormNoSign(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << form;
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Form is not signed");
@@ -110,7 +110,7 @@ void	PresidentialPardonFormNoSign(){
 	}
 }
 
-void	PresidentialPardonFormNoGrade(){
+void	PresidentialPardonFormNoGrade() {
 	Bureaucrat crat("John Doe", 150);
 	PresidentialPardonForm form("criminal");
 	try {
@@ -119,7 +119,7 @@ void	PresidentialPardonFormNoGrade(){
 
 		assert(false);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cout << form;
 		std::cout << "Exception thrown: " << e.what() << std::endl;
 		assert(std::string(e.what()) == "Grade is too low");
@@ -134,7 +134,7 @@ void	testRobotomyRequestForm()
 	RobotomyRequestForm form("Joe Biden");
 
 	form.beSigned(bureaucrat);
-	for (int i = 0; i < 10; i++){
+	for (int i = 0; i < 10; i++) {
 		form.execute(bureaucrat);
 	}
 }
@@ -154,6 +154,8 @@ void	testPresidentialPardonForm()
 
 int	main()
 {
+
+	AForm a;
 	srand(time(0));
 	std::cout << "------------------------------------" << std::endl;
 	ShrubberyCreationFormNoSign();

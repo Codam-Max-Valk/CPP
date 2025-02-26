@@ -8,7 +8,7 @@
 	#define DEBUG 0
 #endif
 
-struct Data{
+struct Data {
 	int id;
 	std::string name;
 	std::string value;

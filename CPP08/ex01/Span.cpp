@@ -3,9 +3,9 @@
 #include <limits>
 #include <vector>
 
-Span::Span() : _n(0){};
+Span::Span() : _n(0) {};
 
-Span::Span(Span &other) : _n(other._n), _vec(other._vec){};
+Span::Span(Span &other) : _n(other._n), _vec(other._vec) {};
 
 Span &Span::operator=(Span &other) {
 	_n = other._n;
@@ -13,9 +13,9 @@ Span &Span::operator=(Span &other) {
 	return *this;
 }
 
-Span::Span(unsigned int n) : _n(n){};
+Span::Span(unsigned int n) : _n(n) {};
 
-Span::~Span(){};
+Span::~Span() {};
 
 void Span::addNumber(int n) {
 	if (_vec.size() == _n)
