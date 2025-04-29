@@ -23,17 +23,19 @@ class SpanFull : public std::exception{
 		}
 };
 
-class Span{
+class Span {
 	private:
 		unsigned int _n;
 		std::vector<int> _vec;
-	public:
 		Span();
+	public:
+		Span(unsigned int n);
 		Span(Span &other);
 		Span &operator=(Span &other);
-		Span(unsigned int n);
 		~Span();
 		void addNumber(int n);
+		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
 };

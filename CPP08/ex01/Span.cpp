@@ -7,15 +7,15 @@ Span::Span() : _n(0) {};
 
 Span::Span(Span &other) : _n(other._n), _vec(other._vec) {};
 
+Span::Span(unsigned int n) : _n(n) {};
+
+Span::~Span() {};
+
 Span &Span::operator=(Span &other) {
 	_n = other._n;
 	_vec = other._vec;
 	return *this;
 }
-
-Span::Span(unsigned int n) : _n(n) {};
-
-Span::~Span() {};
 
 void Span::addNumber(int n) {
 	if (_vec.size() == _n)
@@ -42,7 +42,13 @@ unsigned int Span::shortestSpan() {
 	for (unsigned int i = 1; i < _n; i++) {
 		unsigned int span = vecCopy[i] - vecCopy[i - 1];
 		if (span < shortestSpan)
-		shortestSpan = span;
+			shortestSpan = span;
 	}
 	return shortestSpan;
+}
+
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+	if (std::distance(begin, end) + _vec.size() > _n)
+		throw SpanFull();
+	_vec.insert(_vec.end(), begin, end);
 }

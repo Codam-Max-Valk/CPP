@@ -85,6 +85,16 @@ void testSpanMaxInt() {
 	std::cout << "Longest span: " << longestSpan << std::endl;
 }
 
+void testRange() {
+	Span span(10);
+	std::vector<int> numbers = {1, 2, 3, 4, 5};
+	span.addRange(numbers.begin(), numbers.end());
+	int shortestSpan = span.shortestSpan();
+	std::cout << "Shortest span: " << shortestSpan << std::endl;
+	int longestSpan = span.longestSpan();
+	std::cout << "Longest span: " << longestSpan << std::endl;
+}
+
 int main() {
 	std::srand(time(NULL));
 	testSpanBasic();
@@ -93,6 +103,7 @@ int main() {
 	testSpanFill();
 	testSpanRandom();
 	testSpanMaxInt();
+	testRange();
 
 	return 0;
 }
