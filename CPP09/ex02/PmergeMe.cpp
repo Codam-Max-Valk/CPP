@@ -2,6 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <iomanip>
+#include <algorithm>
 
 bool PmergeMe::isValid(const std::string& str) {
     if (str.empty() || str[0] == '-') return false;
@@ -20,100 +21,6 @@ bool PmergeMe::isValid(const std::string& str) {
     }
 }
 
-void PmergeMe::binaryInsertVec(std::vector<int>& arr, int val) {
-    int left = 0, right = arr.size();
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] < val) left = mid + 1;
-        else right = mid;
-    }
-    arr.insert(arr.begin() + left, val);
-}
-
-void PmergeMe::binaryInsertDeq(std::deque<int>& arr, int val) {
-    int left = 0, right = arr.size();
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] < val) left = mid + 1;
-        else right = mid;
-    }
-    arr.insert(arr.begin() + left, val);
-}
-
-std::vector<int> PmergeMe::fordJohnsonVec(std::vector<int> arr) {
-    if (arr.size() <= 1) return arr;
-    
-    std::vector<int> larger, smaller;
-    int straggler = -1;
-    
-    // Pair and compare
-    for (size_t i = 0; i < arr.size() - 1; i += 2) {
-        if (arr[i] > arr[i + 1]) {
-            larger.push_back(arr[i]);
-            smaller.push_back(arr[i + 1]);
-        } else {
-            larger.push_back(arr[i + 1]);
-            smaller.push_back(arr[i]);
-        }
-    }
-    
-    if (arr.size() % 2 == 1) straggler = arr.back();
-    
-    // Recursively sort larger elements
-    if (larger.size() > 1) larger = fordJohnsonVec(larger);
-    
-    // Build result: first smaller + all larger
-    std::vector<int> result;
-    if (!smaller.empty()) result.push_back(smaller[0]);
-    for (int val : larger) result.push_back(val);
-    
-    // Insert remaining smaller elements
-    for (size_t i = 1; i < smaller.size(); ++i) {
-        binaryInsertVec(result, smaller[i]);
-    }
-    
-    if (straggler != -1) binaryInsertVec(result, straggler);
-    
-    return result;
-}
-
-std::deque<int> PmergeMe::fordJohnsonDeq(std::deque<int> arr) {
-    if (arr.size() <= 1) return arr;
-    
-    std::deque<int> larger, smaller;
-    int straggler = -1;
-    
-    // Pair and compare
-    for (size_t i = 0; i < arr.size() - 1; i += 2) {
-        if (arr[i] > arr[i + 1]) {
-            larger.push_back(arr[i]);
-            smaller.push_back(arr[i + 1]);
-        } else {
-            larger.push_back(arr[i + 1]);
-            smaller.push_back(arr[i]);
-        }
-    }
-    
-    if (arr.size() % 2 == 1) straggler = arr.back();
-    
-    // Recursively sort larger elements
-    if (larger.size() > 1) larger = fordJohnsonDeq(larger);
-    
-    // Build result: first smaller + all larger
-    std::deque<int> result;
-    if (!smaller.empty()) result.push_back(smaller[0]);
-    for (int val : larger) result.push_back(val);
-    
-    // Insert remaining smaller elements
-    for (size_t i = 1; i < smaller.size(); ++i) {
-        binaryInsertDeq(result, smaller[i]);
-    }
-    
-    if (straggler != -1) binaryInsertDeq(result, straggler);
-    
-    return result;
-}
-
 void PmergeMe::run(int argc, char **argv) {
     if (argc < 2) {
         std::cerr << "Error" << std::endl;
@@ -126,32 +33,34 @@ void PmergeMe::run(int argc, char **argv) {
             std::cerr << "Error" << std::endl;
             return;
         }
-        int num = std::stoi(argv[i]);
-        _vec.push_back(num);
-        _deq.push_back(num);
+        _input.push_back(std::stoi(argv[i]));
     }
     
     // Display before
     std::cout << "Before: ";
-    for (size_t i = 0; i < _vec.size(); ++i) {
+    for (size_t i = 0; i < _input.size(); ++i) {
         if (i > 0) std::cout << " ";
-        std::cout << _vec[i];
-        if (i >= 4 && _vec.size() > 5) {
+        std::cout << _input[i];
+        if (i >= 4 && _input.size() > 5) {
             std::cout << " [...]";
             break;
         }
     }
     std::cout << std::endl;
     
+    // Create containers from input
+    std::vector<int> vec(_input.begin(), _input.end());
+    std::deque<int> deq(_input.begin(), _input.end());
+    
     // Sort and time vector
     auto start = std::chrono::high_resolution_clock::now();
-    std::vector<int> sortedVec = fordJohnsonVec(_vec);
+    std::vector<int> sortedVec = fordJohnson(vec);
     auto end = std::chrono::high_resolution_clock::now();
     double vecTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     
     // Sort and time deque
     start = std::chrono::high_resolution_clock::now();
-    std::deque<int> sortedDeq = fordJohnsonDeq(_deq);
+    std::deque<int> sortedDeq = fordJohnson(deq);
     end = std::chrono::high_resolution_clock::now();
     double deqTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     
@@ -168,10 +77,10 @@ void PmergeMe::run(int argc, char **argv) {
     std::cout << std::endl;
     
     // Display timing
-    std::cout << "Time to process a range of " << _vec.size() 
+    std::cout << "Time to process a range of " << _input.size() 
               << " elements with std::vector : " << std::fixed << std::setprecision(5) 
               << vecTime << " us" << std::endl;
-    std::cout << "Time to process a range of " << _deq.size() 
+    std::cout << "Time to process a range of " << _input.size() 
               << " elements with std::deque : " << std::fixed << std::setprecision(5) 
               << deqTime << " us" << std::endl;
 }
