@@ -45,7 +45,6 @@ class BitcoinExchange
 {
 	private:
 		std::map<std::string, double> _data;
-		// std::map<std::string, double> _input_data;
 		std::string _database;
 		std::string _input_database;
 
