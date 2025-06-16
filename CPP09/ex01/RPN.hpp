@@ -24,8 +24,8 @@ class RPN {
 		void performOperation(char op);
 	public:
 		RPN() = default;
-		RPN(const RPN &copy) = delete;
-		RPN &operator=(const RPN &copy) = delete;
+		RPN(const RPN &copy) = default;
+		RPN &operator=(const RPN &copy) = default;
 		~RPN() = default;
 
 		void evaluate(const std::string &expression);

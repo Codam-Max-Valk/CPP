@@ -17,6 +17,11 @@ private:
     bool isValid(const std::string& str);
 
 public:
+	PmergeMe() = default;
+	~PmergeMe() = default;
+	PmergeMe(const PmergeMe &cpy) = default;
+	PmergeMe &operator=(const PmergeMe &cpy) = default;
+
     void run(int argc, char **argv);
 };
 
