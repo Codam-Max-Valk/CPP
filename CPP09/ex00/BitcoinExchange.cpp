@@ -25,12 +25,25 @@ void BitcoinExchange::parseData() {
 	}
 }
 
+static void checkDate(std::string date) {
+	if (date.length() == 10 && date[4] == '-' && date[7] == '-' && 
+		date.substr(5, 2) >= "01" && date.substr(5, 2) <= "12" &&
+		date.substr(8, 2) >= "01" && date.substr(8, 2) <= "31") {
+		return;
+	}
+	throw BadInputException(date);
+}
+
 void BitcoinExchange::processInputFile() {
 	std::ifstream file(_input_database);
 	if (!file.is_open()) throw FileOpenException();
 
 	std::string line;
 	std::getline(file, line);
+
+	if (line != "date | value") {
+		throw BadInputException("First line must be 'date | value'");
+	}
 
 	while (std::getline(file, line)) {
 		if (line.empty() || line[0] == '#') continue;
@@ -44,8 +57,7 @@ void BitcoinExchange::processInputFile() {
 			std::stringstream valueStream(valueStr);
 			double input_value;
 
-			if (input_date.empty() || input_date.length() != 10 || input_date[4] != '-' || input_date[7] != '-')
-				throw BadInputException(input_date);
+			checkDate(input_date);
 			valueStream >> input_value;
 			if (valueStream.fail() || !valueStream.eof()) throw BadInputException(valueStr);
 			if (input_value < 0)
@@ -73,8 +85,6 @@ BitcoinExchange::BitcoinExchange(std::string filename, std::string cmp_filename)
 	parseData();
 	processInputFile();
 }
-
-BitcoinExchange::~BitcoinExchange() {};
 
 const char *BadInputException::what() const noexcept { return _msg.c_str(); }
 

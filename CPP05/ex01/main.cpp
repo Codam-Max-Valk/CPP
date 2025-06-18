@@ -123,7 +123,8 @@ void testFormConstructorAboveMaxGrade() {
 void testFormSignWithEnoughGrade() {
 	Bureaucrat b("John Doe", 50);
 	Form f("Form 6", 50, 75);
-	f.beSigned(b);
+	// f.beSigned(b);
+	b.signForm(f);
 	std::cout << f;
 	std::cout << "Test case 12: Signing a Form with enough grade - [OK]" << std::endl;
 }

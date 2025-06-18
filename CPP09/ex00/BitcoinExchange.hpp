@@ -48,16 +48,13 @@ class BitcoinExchange
 		std::string _database;
 		std::string _input_database;
 
-		BitcoinExchange() = delete;
-		BitcoinExchange(const BitcoinExchange &copy) = delete;
-		BitcoinExchange &operator=(const BitcoinExchange &copy) = delete;
+		BitcoinExchange() = default;
+		BitcoinExchange(const BitcoinExchange &copy) = default;
+		BitcoinExchange &operator=(const BitcoinExchange &copy) = default;
 	public:
 		BitcoinExchange(std::string filename, std::string cmp_filename);
-		~BitcoinExchange();
+		~BitcoinExchange() = default;
 		void processInputFile();
 		void parseData();
-		void parseInputData();
-		void calculateAmount();
-		void printData() const;
 };
 

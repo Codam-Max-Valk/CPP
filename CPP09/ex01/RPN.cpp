@@ -1,4 +1,6 @@
 #include "RPN.hpp"
+#include <sstream>
+
 
 int RPN::getResult() const {
 	return result;

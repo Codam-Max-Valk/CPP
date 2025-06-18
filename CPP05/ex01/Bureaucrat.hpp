@@ -4,10 +4,13 @@
 #include <ostream>
 #include <string>
 
+<<<<<<< Updated upstream
 #ifndef DEBUG
 	#define DEBUG 0
 #endif
 
+=======
+>>>>>>> Stashed changes
 class GradeTooHighException : public std::exception{
 	private:
 		const char *_msg = "Grade is too high";
@@ -22,7 +25,10 @@ class GradeTooLowException : public std::exception{
 		const char *what() const noexcept;
 };
 
+<<<<<<< Updated upstream
 class Form;
+=======
+>>>>>>> Stashed changes
 
 class Bureaucrat{
 	private:
@@ -39,7 +45,11 @@ class Bureaucrat{
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+<<<<<<< Updated upstream
 		void signForm(Form &form);
+=======
+		
+>>>>>>> Stashed changes
 
 		class GradeTooHighException : public ::GradeTooHighException {};
 		class GradeTooLowException : public ::GradeTooLowException {};

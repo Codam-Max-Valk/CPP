@@ -1,9 +1,9 @@
 #pragma once
 
 #include <iostream>
+
 #include <string>
 #include <stack>
-#include <sstream>
 #include <exception>
 
 #define OPERATORS "+-*/"
